@@ -22,28 +22,25 @@ const produtos = [
 ];
 // consegui colocar os objetos e o array de cores na tela
 const App = () => {
-  const cores = produtos[0].cores;
-  console.log(cores)
 
   return (
     <div>
       {
-          produtos.map((produto) => (
-            <div>
-              <h1 key={produto.nome}>{produto.nome}</h1>
-              <p key={produto.preco}>{produto.preco}</p>
-              <ul>
-                {produto.cores.map((cor) => (
-                  <li key={cor}>{cor}</li>
-                ))}
-              </ul>
-            </div>
-          
+        produtos.map((produto) => (
+          <div>
+            <h1 key={produto.nome}>{produto.nome}</h1>
+            <p key={produto.preco}>Preço: R$ {parseInt(produto.preco.replace('R$ ', ''))}</p>
+            <ul>
+              {produto.cores.map((cor) => (
+                <li key={cor}>{cor}</li>
+              ))}
+            </ul>
+          </div>
+
         ))
       }
-    </div>  
+    </div>
   );
-    
 };
 
 export default App;
