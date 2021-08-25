@@ -1,44 +1,21 @@
-// Organize os produtos como mostrado no vídeo
-// Mostre apenas produtos que forem mais caros que R$ 1500
-const produtos = [
-  {
-    id: 1,
-    nome: 'Smartphone',
-    preco: 'R$ 2000',
-    cores: ['#29d8d5', '#252a34', '#fc3766'],
-  },
-  {
-    id: 2,
-    nome: 'Notebook',
-    preco: 'R$ 3000',
-    cores: ['#ffd045', '#d4394b', '#f37c59'],
-  },
-  {
-    id: 3,
-    nome: 'Tablet',
-    preco: 'R$ 1500',
-    cores: ['#365069', '#47c1c8', '#f95786'],
-  },
-];
-// consegui colocar os objetos e o array de cores na tela
-const App = () => {
+import React from 'react';
+import Home from './0212-desafios-componentes/Home';
+import Produtos from './0212-desafios-componentes/Produtos';
 
+// Replique a interface como a apresentada na aula
+// Utilize a array abaixo para mostrar os produtos
+// Quebre em componentes o que precisar ser reutilizado
+// Dica: const { pathname } = window.location; (puxa o caminho do URL)
+const produtos = [
+  { nome: 'Notebook', propriedades: ['16gb ram', '512gb'] },
+  { nome: 'Smartphone', propriedades: ['2gb ram', '128gb'] },
+];
+
+const App = () => {
   return (
     <div>
-      {
-        produtos.map((produto) => (
-          <div>
-            <h1 key={produto.nome}>{produto.nome}</h1>
-            <p key={produto.preco}>Preço: R$ {parseInt(produto.preco.replace('R$ ', ''))}</p>
-            <ul>
-              {produto.cores.map((cor) => (
-                <li key={cor}>{cor}</li>
-              ))}
-            </ul>
-          </div>
-
-        ))
-      }
+      <Home />
+      <Produtos />
     </div>
   );
 };
