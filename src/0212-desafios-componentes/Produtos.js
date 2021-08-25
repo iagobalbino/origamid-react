@@ -6,12 +6,17 @@ const produtos = [
 ];
 
 const Produtos = () => {
+
   return (
     <div>
-      <p>{produtos.nome}</p>
-      <ul>
-        {produtos.map((produto) => produto.propriedades.map((propriedade) => <li>{propriedade}</li>))}
-      </ul>
+      <h2>Produtos</h2>
+      {produtos.map((produto) =>
+        <div style={{ border: 'black solid 1px', marginBottom: '10px', padding: '10px' }}>
+          <p>{produto.nome}</p>
+          <ul>
+            {produto.propriedades.map((props) => <li>{props}</li>)}
+          </ul>
+        </div>)}
     </div>
   );
 };
