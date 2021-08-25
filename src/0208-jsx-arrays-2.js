@@ -22,22 +22,25 @@ const produtos = [
 ];
 // consegui colocar os objetos e o array de cores na tela
 const App = () => {
-  const produtosFiltrados = produtos.filter((produto) => parseInt(produto.preco.replace('R$ ', '')) > 1500);
-  console.log(produtosFiltrados);
 
-  return <div>
-    {
-      produtosFiltrados.map((produto) =>
-        <div>
-          <h1>{produto.nome}</h1>
-          <p>Preço: {produto.preco}</p>
-          <ul>
-            {produto.cores.map((cor) => <li style={{ backgroundColor: cor, color: '#fff' }}>{cor}</li>)}
-          </ul>
-        </div>
-      )
-    }
-  </div>;
+  return (
+    <div>
+      {
+        produtos.map((produto) => (
+          <div>
+            <h1 key={produto.nome}>{produto.nome}</h1>
+            <p key={produto.preco}>Preço: R$ {parseInt(produto.preco.replace('R$ ', ''))}</p>
+            <ul>
+              {produto.cores.map((cor) => (
+                <li key={cor}>{cor}</li>
+              ))}
+            </ul>
+          </div>
+
+        ))
+      }
+    </div>
+  );
 };
 
 export default App;
