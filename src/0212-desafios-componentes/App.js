@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './0212-desafios-componentes/Header';
-import Home from './0212-desafios-componentes/Home';
-import Produtos from './0212-desafios-componentes/Produtos';
+import Header from 'Header';
+import Home from 'Home';
+import Produtos from 'Produtos';
 
 
 const App = () => {
