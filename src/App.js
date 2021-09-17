@@ -1,31 +1,27 @@
 import React from 'react';
-import Home from './0212-desafios-componentes/Home';
-import Produtos from './0212-desafios-componentes/Produtos';
-
-// Replique a interface como a apresentada na aula
-// Utilize a array abaixo para mostrar os produtos
-// Quebre em componentes o que precisar ser reutilizado
-// Dica: const { pathname } = window.location; (puxa o caminho do URL)
-const produtos = [
-  { nome: 'Notebook', propriedades: ['16gb ram', '512gb'] },
-  { nome: 'Smartphone', propriedades: ['2gb ram', '128gb'] },
-];
+import Produto from './0301-useState-3/Produto';
 
 const App = () => {
+  const [dados, setDados] = React.useState(null);
+  const [carregando, setCarregando] = React.useState(null);
+
+  async function handleClick(event) {
+    setCarregando(true);
+    const response = await fetch(`https://ranekapi.origamid.dev/json/api/produto/${event.target.innerText}`);
+
+    const json = await response.json();
+    setDados(json);
+    setCarregando(false);
+  }
 
   return (
     <div>
-      <ul>
-        <li>
-          <a href=''>Home</a>
-        </li>
-        <li>
-          <a href=''>Produtos</a>
-        </li>
-      </ul>
-
-      <Home />
-    </div >
+      <button style={{ margin: '.5rem' }} onClick={handleClick}>notebook</button>
+      <button style={{ margin: '.5rem' }} onClick={handleClick}>smartphone</button>
+      <button style={{ margin: '.5rem' }} onClick={handleClick}>tablet</button>
+      {carregando && <p>Carregando...</p>}
+      {!carregando && dados && <Produto dados={dados} />}
+    </div>
   );
 };
 
