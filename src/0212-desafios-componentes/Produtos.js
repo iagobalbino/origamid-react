@@ -1,4 +1,6 @@
 import React from 'react';
+import Titulo from './Titulo';
+import Produto from './Produto'
 
 const produtos = [
   { nome: 'Notebook', propriedades: ['16gb ram', '512gb'] },
@@ -8,16 +10,12 @@ const produtos = [
 const Produtos = () => {
 
   return (
-    <div>
-      <h2>Produtos</h2>
-      {produtos.map((produto) =>
-        <div style={{ border: 'black solid 1px', marginBottom: '10px', padding: '10px' }}>
-          <p>{produto.nome}</p>
-          <ul>
-            {produto.propriedades.map((props) => <li>{props}</li>)}
-          </ul>
-        </div>)}
-    </div>
+    <section>
+      <Titulo texto='Produtos' />
+      {produtos.map((produto) => (
+        <Produto key={produto.nome} {...produto} />
+      ))}
+    </section>
   );
 };
 

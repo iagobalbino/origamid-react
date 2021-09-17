@@ -1,11 +1,12 @@
 import React from 'react';
+import Titulo from './Titulo';
 
 const Home = () => {
   return (
-    <div>
-      <h2>Home</h2>
+    <section>
+      <Titulo texto='Home' />
       <p>Essa é home do meu site</p>
-    </div>
+    </section>
   );
 };
 
